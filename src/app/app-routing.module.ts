@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BooksComponent } from './books/books.component';
 import { BookComponent } from './books/book/book.component';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { AddBookComponent } from './books/add-book/add-book.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,13 @@ const routes: Routes = [
   {
     path: 'books',
     component: BooksComponent,
-    children: [{ path: ':id', component: BookComponent }],
+    children: [
+      { path: '', component: BookListComponent },
+      {
+        path: 'add',
+        component: AddBookComponent,
+      },
+    ],
   },
 ];
 
