@@ -10,9 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { BookComponent } from './books/book/book.component';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { BookListComponent } from './books/book-list/book-list.component';
+import { EditBookComponent } from './books/edit-book/edit-book.component';
 
 @NgModule({
-  declarations: [AppComponent, BooksComponent, HomeComponent, BookComponent, AddBookComponent, BookListComponent],
+  declarations: [AppComponent, BooksComponent, HomeComponent, BookComponent, AddBookComponent, BookListComponent, EditBookComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,5 +1,5 @@
-<h3 class="text-white fs-6 text-uppercase">Add Book</h3>
-<form [formGroup]="bookForm" (ngSubmit)="onAddBook()" class="text-white w-50">
+<h3 class="text-white fs-6 text-uppercase">Edit Book</h3>
+<form [formGroup]="bookForm" (ngSubmit)="onEditBook()" class="text-white w-50">
   <div class="form-group">
     <label for="title">Title</label>
     <input
@@ -130,7 +130,7 @@
     class="btn btn-warning mt-2 w-100"
     [disabled]="!bookForm.valid"
   >
-    Add
+    Edit
   </button>
   <a routerLink="/books" class="btn btn-success mt-2 w-100">Book List</a>
 </form>

@@ -1,1 +1,19 @@
-<p class="text-white">book works!</p>
+<div
+  class="text-white d-flex justify-content-between book align-items-center rounded p-2"
+>
+  <div class="d-flex align-items-center">
+    <img src="{{ book.coverUrl }}" alt="test" class="me-2 cover-image" />
+    <p class="m-0">{{ book.title }}</p>
+  </div>
+  <div>
+    <span
+      class="badge me-2"
+      [ngClass]="{
+        'text-bg-warning': book.quantity > 0,
+        'text-bg-secondary': book.quantity === 0
+      }"
+      >{{ book.quantity }}</span
+    >
+    <button class="btn btn-dark" (click)="goToEditPage(book)">Edit</button>
+  </div>
+</div>

@@ -6,7 +6,7 @@ import { Book, BookData } from './book.model';
 @Injectable({
   providedIn: 'root',
 })
-export class BookService {
+export class BookHttpService {
   private bookUrl =
     'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app/book.json';
 
@@ -17,13 +17,18 @@ export class BookService {
       map((books) => {
         return Object.keys(books).map((key) => ({
           id: key,
-          ...books[key],
+          title: books[key].title,
+          author: books[key].author,
+          publisher: books[key].publisher,
+          coverUrl: books[key].coverUrl,
+          category: books[key].category,
+          quantity: books[key].quantity,
         }));
       })
     );
   }
 
-  addBook(book: BookData) {
+  addBook(book: Book) {
     return this.http.post(this.bookUrl, book);
   }
 

@@ -1,7 +1,3 @@
-.book {
-  background-color: hsl(0, 0%, 22%);
-}
-
-.book-list > div {
+.book-list > * {
   margin-bottom: 1rem;
 }
