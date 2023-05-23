@@ -17,12 +17,7 @@ export class BookHttpService {
       map((books) => {
         return Object.keys(books).map((key) => ({
           id: key,
-          title: books[key].title,
-          author: books[key].author,
-          publisher: books[key].publisher,
-          coverUrl: books[key].coverUrl,
-          category: books[key].category,
-          quantity: books[key].quantity,
+          ...books[key],
         }));
       })
     );
