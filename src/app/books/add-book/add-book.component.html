@@ -1,4 +1,4 @@
-<h3 class="text-white fs-6">Add Book</h3>
+<h3 class="text-white fs-6 text-uppercase">Add Book</h3>
 <form class="w-50 text-white">
   <div class="form-group">
     <label for="title">Title</label>
@@ -27,8 +27,24 @@
     />
   </div>
   <div class="form-group">
-    <label for="author">Category</label>
-    <input type="text" class="form-control" id="author" placeholder="Author" />
+    <label for="category">Category</label>
+    <select class="form-select" aria-label="select book category" id="category">
+      <option value="1">Horror</option>
+      <option value="2">Romance</option>
+      <option value="3">Fiction</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input
+      min="0"
+      step="1"
+      type="number"
+      class="form-control"
+      id="quantity"
+      placeholder="Quantity"
+    />
   </div>
   <button type="submit" class="btn btn-warning mt-2 w-100">Add</button>
+  <a routerLink="/books" class="btn btn-success mt-2 w-100">Book List</a>
 </form>
