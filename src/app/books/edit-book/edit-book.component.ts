@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { BookHttpService } from '../book-http.service';
 import { BookFormService } from '../book-form.service';
 
@@ -12,6 +12,8 @@ import { BookFormService } from '../book-form.service';
 export class EditBookComponent implements OnInit {
   book!: Book;
   bookForm!: FormGroup;
+  isError = false;
+  isSuccess = false;
   categories: { name: string }[] = [
     {
       name: 'Horror',
@@ -39,8 +41,16 @@ export class EditBookComponent implements OnInit {
       [this.book.id]: this.bookForm.value,
     };
 
-    this.bookService.updateBook(updateBook).subscribe((data) => {
-      console.log('success editing book', data);
+    this.bookService.updateBook(updateBook).subscribe({
+      next: (data) => {
+        console.log('success editing book', data);
+        this.isSuccess = true;
+        this.isError = false;
+      },
+      error: (error) => {
+        this.isError = true;
+        this.isSuccess = false;
+      },
     });
   }
 }

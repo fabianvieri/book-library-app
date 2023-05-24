@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { BookHttpService } from '../book-http.service';
 import { BookFormService } from '../book-form.service';
 
@@ -10,6 +10,8 @@ import { BookFormService } from '../book-form.service';
 })
 export class AddBookComponent implements OnInit {
   bookForm!: FormGroup;
+  isError = false;
+  isSuccess = false;
   categories: { name: string }[] = [
     {
       name: 'Horror',
@@ -35,7 +37,13 @@ export class AddBookComponent implements OnInit {
     this.bookService.addBook(this.bookForm.value).subscribe({
       next: (data) => {
         console.log('success adding book', data);
+        this.isSuccess = true;
+        this.isError = false;
         this.bookForm.reset();
+      },
+      error: (error) => {
+        this.isError = true;
+        this.isSuccess = false;
       },
     });
   }
