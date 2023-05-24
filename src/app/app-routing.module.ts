@@ -6,6 +6,10 @@ import { BookComponent } from './books/book/book.component';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 
 const routes: Routes = [
   {
@@ -24,6 +28,21 @@ const routes: Routes = [
       {
         path: ':id/edit',
         component: EditBookComponent,
+      },
+    ],
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    children: [
+      { path: '', component: CategoryListComponent },
+      {
+        path: 'add',
+        component: AddCategoryComponent,
+      },
+      {
+        path: ':id/edit',
+        component: EditCategoryComponent,
       },
     ],
   },
