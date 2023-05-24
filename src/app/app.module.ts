@@ -11,9 +11,14 @@ import { BookComponent } from './books/book/book.component';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { CategoryComponent } from './categories/category/category.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 
 @NgModule({
-  declarations: [AppComponent, BooksComponent, HomeComponent, BookComponent, AddBookComponent, BookListComponent, EditBookComponent],
+  declarations: [AppComponent, BooksComponent, HomeComponent, BookComponent, AddBookComponent, BookListComponent, EditBookComponent, CategoriesComponent, AddCategoryComponent, CategoryComponent, CategoryListComponent, EditCategoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
