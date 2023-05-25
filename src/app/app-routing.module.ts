@@ -10,11 +10,19 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { categoryResolver } from './resolvers/category.resolver';
+import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    children: [],
+  },
+  {
+    path: 'book/:id',
+    component: BookDetailComponent,
   },
   {
     path: 'books',
@@ -24,10 +32,12 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddBookComponent,
+        resolve: { categories: categoryResolver },
       },
       {
         path: ':id/edit',
         component: EditBookComponent,
+        resolve: { categories: categoryResolver },
       },
     ],
   },
@@ -45,6 +55,10 @@ const routes: Routes = [
         component: EditCategoryComponent,
       },
     ],
+  },
+  {
+    path: 'services',
+    component: ServicesComponent,
   },
 ];
 
