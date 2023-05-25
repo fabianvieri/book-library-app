@@ -8,8 +8,8 @@ import { Category, CategoryData } from './category.model';
   providedIn: 'root',
 })
 export class CategoryHttpService {
-  private categoryUrl =
-  'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app/category.json';
+  private endPointURL = 'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app/';
+  categoryUrl: string = this.endPointURL+'category.json';
 
   errorHandling = new Subject<any>();
 
@@ -33,4 +33,9 @@ export class CategoryHttpService {
   updateCategory(category: CategoryData) {
     return this.http.patch(this.categoryUrl, category);
   }
+
+  deleteCategory(category: Category){
+    return this.http.delete(this.endPointURL+"category/"+category.id+".json");
+  }
+
 }

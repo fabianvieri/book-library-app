@@ -15,17 +15,15 @@
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let category of categories; let i= index">
-        <tr>
+        <tr *ngFor="let category of categories ; let i= index">
             <th scope="row">{{i+1}}</th>
             <td>{{category.name}}</td>
             <td>{{category.desc}}</td>
             <td>
-                <button class="btn btn-success" routerLink="/categories/id/edit">Edit</button>
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-success" (click)="goToEditCategory(category)">Edit</button>
+                <button class="btn btn-danger" (click)="onDeleteCategory(category)">Delete</button>
             </td>
         </tr>
-    </ng-container>
     </tbody>
 </table>
   
