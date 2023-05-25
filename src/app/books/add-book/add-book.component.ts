@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BookHttpService } from '../book-http.service';
 import { BookFormService } from '../book-form.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -12,25 +13,19 @@ export class AddBookComponent implements OnInit {
   bookForm!: FormGroup;
   isError = false;
   isSuccess = false;
-  categories: { name: string }[] = [
-    {
-      name: 'Horror',
-    },
-    {
-      name: 'Romance',
-    },
-    {
-      name: 'Fiction',
-    },
-  ];
+  categories: { name: string }[] = [];
 
   constructor(
     private form: BookFormService,
-    private bookService: BookHttpService
+    private bookService: BookHttpService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.bookForm = this.form.createForm(null);
+    this.route.data.subscribe(({ categories }) => {
+      this.categories = categories;
+      this.bookForm = this.form.createForm(null);
+    });
   }
 
   onAddBook() {

@@ -17,9 +17,29 @@ import { CategoryComponent } from './categories/category/category.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { FilterPipe } from './books/filter.pipe';
+import { ServicesComponent } from './services/services.component';
 
 @NgModule({
-  declarations: [AppComponent, BooksComponent, HomeComponent, BookComponent, AddBookComponent, BookListComponent, EditBookComponent, CategoriesComponent, AddCategoryComponent, CategoryComponent, CategoryListComponent, EditCategoryComponent, SpinnerComponent],
+  declarations: [
+    AppComponent,
+    BooksComponent,
+    HomeComponent,
+    BookComponent,
+    AddBookComponent,
+    BookListComponent,
+    EditBookComponent,
+    CategoriesComponent,
+    AddCategoryComponent,
+    CategoryComponent,
+    CategoryListComponent,
+    EditCategoryComponent,
+    SpinnerComponent,
+    BookDetailComponent,
+    FilterPipe,
+    ServicesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

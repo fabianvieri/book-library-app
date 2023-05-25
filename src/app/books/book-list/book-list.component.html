@@ -3,9 +3,9 @@
   <a class="btn btn-warning" routerLink="/books/add">Add Book</a>
 </div>
 <app-spinner *ngIf="isLoading"></app-spinner>
-<div *ngIf="!isLoading && !isError" class="d-flex flex-column book-list">
-  <app-book *ngFor="let book of books" [book]="book"></app-book>
-</div>
 <div *ngIf="!isLoading && isError">
   <p class="text-danger">Error Getting Book</p>
+</div>
+<div *ngIf="!isLoading && !isError" class="d-flex flex-column book-list">
+  <app-book *ngFor="let book of books" [book]="book"></app-book>
 </div>
