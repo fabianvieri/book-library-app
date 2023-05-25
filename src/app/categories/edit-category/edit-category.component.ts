@@ -15,7 +15,7 @@ export class EditCategoryComponent implements OnInit{
 
   constructor(
     private form: CategoryFormService,
-    private categoryService: CategoryHttpService
+    private categoryService: CategoryHttpService,
   ) {}
 
   ngOnInit(): void {
@@ -24,12 +24,15 @@ export class EditCategoryComponent implements OnInit{
   }
 
   onEditCategory() {
-    const updateCategory = {
-      [this.category.id]: this.categoryForm.value,
-    };
+    if(confirm("Are you sure to update "+ this.category.name)) {
+      const updateCategory = {
+        [this.category.id]: this.categoryForm.value,
+      };
 
-    this.categoryService.updateCategory(updateCategory).subscribe((data) => {
-      console.log('success editing category', data);
-    });
+      this.categoryService.updateCategory(updateCategory).subscribe((data) => {
+        console.log('success editing category', data);
+      });
+      
+    }
   }
 }

@@ -18,7 +18,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   onAddCategory() {
-    // Send Http 
+    // Send Http
     this.categoryService.addCategory(this.categoryForm.value).subscribe({
       next: (data) => {
         console.log('success adding category', data);
