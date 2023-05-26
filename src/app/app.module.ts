@@ -18,8 +18,8 @@ import { CategoryListComponent } from './categories/category-list/category-list.
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { LoansComponent } from './loans/loans.component';
 import { FilterPipe } from './books/filter.pipe';
-import { ServicesComponent } from './services/services.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { ServicesComponent } from './services/services.component';
     SpinnerComponent,
     BookDetailComponent,
     FilterPipe,
-    ServicesComponent,
+    LoansComponent,
   ],
   imports: [
     BrowserModule,

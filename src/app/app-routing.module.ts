@@ -12,7 +12,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { categoryResolver } from './resolvers/category.resolver';
-import { ServicesComponent } from './services/services.component';
+import { LoansComponent } from './loans/loans.component';
 
 const routes: Routes = [
   {
@@ -57,8 +57,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'services',
-    component: ServicesComponent,
+    path: 'loans',
+    component: LoansComponent,
   },
 ];
 
