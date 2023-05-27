@@ -7,8 +7,9 @@ import { Book, BookData } from './book.model';
   providedIn: 'root',
 })
 export class BookHttpService {
-  private bookUrl =
-    'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app/book.json';
+  private baseUrl =
+    'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app';
+  private bookUrl = `${this.baseUrl}/book.json`;
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +22,10 @@ export class BookHttpService {
         }));
       })
     );
+  }
+
+  getBookById(id: string) {
+    return this.http.get<Book>(`${this.baseUrl}/book/${id}.json`);
   }
 
   addBook(book: Book) {

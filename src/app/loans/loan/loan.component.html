@@ -14,6 +14,13 @@
       }"
       >{{ book.quantity }}</span
     >
-    <button class="btn btn-dark" (click)="goToEditPage()">Edit</button>
+    <button
+      class="btn btn-dark me-2"
+      (click)="goToAddLoanPage()"
+      [disabled]="book.quantity === 0"
+    >
+      Loan
+    </button>
+    <a class="btn btn-success" [routerLink]="[book.id]">Detail</a>
   </div>
 </div>

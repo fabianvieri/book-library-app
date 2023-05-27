@@ -20,6 +20,10 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { LoansComponent } from './loans/loans.component';
 import { FilterPipe } from './books/filter.pipe';
+import { AddLoanComponent } from './loans/add-loan/add-loan.component';
+import { LoanDetailComponent } from './loans/loan-detail/loan-detail.component';
+import { LoanListComponent } from './loans/loan-list/loan-list.component';
+import { LoanComponent } from './loans/loan/loan.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { FilterPipe } from './books/filter.pipe';
     BookDetailComponent,
     FilterPipe,
     LoansComponent,
+    AddLoanComponent,
+    LoanDetailComponent,
+    LoanListComponent,
+    LoanComponent,
   ],
   imports: [
     BrowserModule,

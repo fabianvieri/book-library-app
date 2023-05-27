@@ -1,0 +1,82 @@
+<h3 class="text-white fs-6 text-uppercase">Loan Book</h3>
+<p class="text-white mb-1">
+  <span class="text-warning">Book Title</span> : {{ book.title }}
+</p>
+<form [formGroup]="loanForm" (ngSubmit)="onAddLoan()" class="text-white w-50">
+  <div class="form-group">
+    <label for="user">User</label>
+    <select
+      class="form-select"
+      formControlName="user"
+      aria-label="select user"
+      id="user"
+    >
+      <option value="" selected>Choose User</option>
+      <option *ngFor="let user of users" [ngValue]="user.name">
+        {{ user.name }}
+      </option>
+    </select>
+    <span
+      class="text-danger"
+      *ngIf="
+        !loanForm.get('user')!.valid &&
+        (loanForm.get('user')!.dirty || loanForm.get('user')!.touched)
+      "
+    >
+      Invalid User
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="fromDate">From Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="fromDate"
+      placeholder="From date"
+      formControlName="fromDate"
+      required
+    />
+    <span
+      class="text-danger"
+      *ngIf="
+        !loanForm.get('fromDate')!.valid &&
+        (loanForm.get('fromDate')!.dirty || loanForm.get('fromDate')!.touched)
+      "
+    >
+      Invalid From Date
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="toDate">To Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="toDate"
+      placeholder="To date"
+      formControlName="toDate"
+    />
+    <span
+      class="text-danger"
+      *ngIf="
+        !loanForm.get('toDate')!.valid &&
+        (loanForm.get('toDate')!.dirty || loanForm.get('toDate')!.touched)
+      "
+    >
+      Invalid To Date
+    </span>
+  </div>
+  <span class="badge bg-danger fs-6 my-2" *ngIf="isError">
+    Error Loan Book
+  </span>
+  <span class="badge bg-success fs-6 my-2" *ngIf="isSuccess">
+    Success Loan Book
+  </span>
+  <button
+    type="submit"
+    class="btn btn-warning mt-2 w-100"
+    [disabled]="!loanForm.valid"
+  >
+    Loan Book
+  </button>
+  <a routerLink="/loans" class="btn btn-success mt-2 w-100">Book List</a>
+</form>

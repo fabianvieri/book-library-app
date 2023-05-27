@@ -1,19 +1,19 @@
 import { Component, Input } from '@angular/core';
-import { Book } from '../book.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from 'src/app/books/book.model';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
+  selector: 'app-loan',
+  templateUrl: './loan.component.html',
+  styleUrls: ['./loan.component.css'],
 })
-export class BookComponent {
+export class LoanComponent {
   @Input() book!: Book;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
-  goToEditPage() {
-    this.router.navigate([this.book.id, 'edit'], {
+  goToAddLoanPage() {
+    this.router.navigate([this.book.id, 'add'], {
       relativeTo: this.route,
       state: this.book,
     });
