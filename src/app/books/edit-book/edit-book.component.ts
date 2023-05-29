@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { BookHttpService } from '../book-http.service';
 import { BookFormService } from '../book-form.service';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/categories/category.model';
 
 @Component({
   selector: 'app-edit-book',
@@ -15,7 +16,7 @@ export class EditBookComponent implements OnInit {
   bookForm!: FormGroup;
   isError = false;
   isSuccess = false;
-  categories: { name: string }[] = [];
+  categories: Category[] = [];
 
   constructor(
     private form: BookFormService,

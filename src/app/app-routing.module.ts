@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BooksComponent } from './books/books.component';
-import { BookComponent } from './books/book/book.component';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
@@ -13,6 +12,9 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { categoryResolver } from './resolvers/category.resolver';
 import { LoansComponent } from './loans/loans.component';
+import { AddLoanComponent } from './loans/add-loan/add-loan.component';
+import { LoanDetailComponent } from './loans/loan-detail/loan-detail.component';
+import { LoanListComponent } from './loans/loan-list/loan-list.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,11 @@ const routes: Routes = [
   {
     path: 'loans',
     component: LoansComponent,
+    children: [
+      { path: '', component: LoanListComponent },
+      { path: ':id', component: LoanDetailComponent },
+      { path: ':id/add', component: AddLoanComponent },
+    ],
   },
 ];
 

@@ -1,0 +1,8 @@
+<h3 class="text-white fs-6 text-uppercase">Book List</h3>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div *ngIf="!isLoading && isError">
+  <p class="text-danger">Error Getting Book</p>
+</div>
+<div *ngIf="!isLoading && !isError" class="d-flex flex-column book-list">
+  <app-loan *ngFor="let book of books" [book]="book"></app-loan>
+</div>
