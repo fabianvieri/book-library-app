@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Book, BookData } from './book.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookHttpService {
-  private baseUrl =
-    'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app';
+  private baseUrl = environment.apiUrl;
   private bookUrl = `${this.baseUrl}/book.json`;
 
   constructor(private http: HttpClient) {}

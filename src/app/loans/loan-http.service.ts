@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Loan, LoanData } from './loan.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { flatMap, map, switchMap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { BookHttpService } from '../books/book-http.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoanHttpService {
-  private baseUrl =
-    'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app';
+  private baseUrl = environment.apiUrl;
   private loanUrl = `${this.baseUrl}/loan.json`;
 
   constructor(private http: HttpClient, private bookService: BookHttpService) {}

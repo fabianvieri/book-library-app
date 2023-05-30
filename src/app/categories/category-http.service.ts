@@ -1,19 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';;
-import {map, catchError, tap} from 'rxjs/operators'
-import {Subject, throwError} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Category, CategoryData } from './category.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryHttpService {
-  private endPointURL = 'https://web-api-952c7-default-rtdb.asia-southeast1.firebasedatabase.app/';
-  categoryUrl: string = this.endPointURL+'category.json';
+  private baseUrl = environment.apiUrl;
+  private categoryUrl = `${this.baseUrl}/category.json`;
 
-  errorHandling = new Subject<any>();
-
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
   getCategories() {
     return this.http.get<CategoryData>(this.categoryUrl).pipe(
@@ -34,8 +32,7 @@ export class CategoryHttpService {
     return this.http.patch(this.categoryUrl, category);
   }
 
-  deleteCategory(category: Category){
-    return this.http.delete(this.endPointURL+"category/"+category.id+".json");
+  deleteCategory(category: Category) {
+    return this.http.delete(`${this.baseUrl}/category/${category.id}.json`);
   }
-
 }
