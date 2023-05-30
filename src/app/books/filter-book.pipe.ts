@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Book } from './book.model';
 
 @Pipe({
-  name: 'filter',
+  name: 'filterBook',
 })
-export class FilterPipe implements PipeTransform {
+export class FilterBookPipe implements PipeTransform {
   transform(
     value: Book[],
     filterValue: number | string,

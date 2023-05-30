@@ -2,11 +2,11 @@
   <h2 class="text-warning fs-4 mb-3">Book Display</h2>
   <h3 class="text-white fs-6 text-uppercase">Available Books</h3>
   <app-spinner *ngIf="isLoading"></app-spinner>
-  <div *ngIf="!isLoading && isError">
-    <p class="text-danger">Error Getting Book</p>
-  </div>
+  <p *ngIf="!isLoading && isError" class="text-danger fw-bold">
+    Error Getting Book
+  </p>
   <div *ngIf="!isLoading && !isError" class="row g-2">
-    <div class="col-3" *ngFor="let book of books | filter : 0 : 'quantity'">
+    <div class="col-3" *ngFor="let book of books | filterBook : 0 : 'quantity'">
       <div class="card custom-card p-2">
         <img [src]="book.coverUrl" class="card-img-top" alt="..." />
         <div class="card-body text-center">

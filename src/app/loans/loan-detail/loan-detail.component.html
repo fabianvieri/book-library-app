@@ -1,1 +1,63 @@
-<p>loan-detail works!</p>
+<h3 class="text-white fs-6 text-uppercase">Loan Detail</h3>
+<p class="text-white mb-1 fw-bold">
+  <span class="text-warning">Book</span> : {{ book.title }}
+</p>
+<div>
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <p class="text-danger fw-bold" *ngIf="!isLoading && isError">
+    Error Getting Loan
+  </p>
+  <p
+    *ngIf="!isLoading && !isError && loans.length === 0"
+    class="text-danger fw-bold"
+  >
+    There are no ongoing loan for this book
+  </p>
+  <table
+    *ngIf="!isLoading && !isError && loans.length > 0"
+    class="table table-dark"
+  >
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">User</th>
+        <th scope="col">From Date</th>
+        <th scope="col">To Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let loan of loans | filterLoan : false : 'isReturn';
+          let i = index
+        "
+      >
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ loan.user }}</td>
+        <td>{{ loan.fromDate }}</td>
+        <td>{{ loan.toDate }}</td>
+        <td>
+          <span
+            class="badge fs-6 text-capitalize"
+            [ngClass]="{
+              'text-bg-primary': getLoanStatus(loan.toDate) === 'in process',
+              'text-bg-danger': getLoanStatus(loan.toDate) === 'fined'
+            }"
+            >{{ getLoanStatus(loan.toDate) }}</span
+          >
+        </td>
+        <td>
+          <button class="btn btn-warning" (click)="onReturnBook(loan)">
+            Return
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isReturnError">
+    <span class="text-bg-danger badge fs-6">Error returning book</span>
+  </div>
+  <a routerLink="/loans" class="btn btn-success mt-2">Book List</a>
+</div>
