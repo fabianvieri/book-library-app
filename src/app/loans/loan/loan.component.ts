@@ -18,4 +18,11 @@ export class LoanComponent {
       state: this.book,
     });
   }
+
+  goToDetailPage() {
+    this.router.navigate([this.book.id], {
+      relativeTo: this.route,
+      state: this.book,
+    });
+  }
 }

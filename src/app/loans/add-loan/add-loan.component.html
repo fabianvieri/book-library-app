@@ -1,6 +1,6 @@
 <h3 class="text-white fs-6 text-uppercase">Loan Book</h3>
-<p class="text-white mb-1">
-  <span class="text-warning">Book Title</span> : {{ book.title }}
+<p class="text-white mb-1 fw-bold">
+  <span class="text-warning">Book</span> : {{ book.title }}
 </p>
 <form [formGroup]="loanForm" (ngSubmit)="onAddLoan()" class="text-white w-50">
   <div class="form-group">

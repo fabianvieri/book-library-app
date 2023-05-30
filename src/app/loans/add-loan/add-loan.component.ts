@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanHttpService } from '../loan-http.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Book } from 'src/app/books/book.model';
+import { DateValidator } from './date-validator';
 
 @Component({
   selector: 'app-add-loan',
@@ -16,6 +23,7 @@ export class AddLoanComponent implements OnInit {
 
   isError = false;
   isSuccess = false;
+  currentFromDate = '';
 
   constructor(
     private fb: FormBuilder,
@@ -30,17 +38,27 @@ export class AddLoanComponent implements OnInit {
     this.loanForm = this.fb.group({
       user: ['', Validators.minLength(3)],
       fromDate: ['', Validators.required],
-      toDate: ['', Validators.required],
+      toDate: [''],
     });
     // });
-    // this.route.params.subscribe((params: Params) => {
-    //   this.bookId = params['id'];
-    // });
+
+    this.loanForm.get('fromDate')?.valueChanges.subscribe((value) => {
+      if (value) {
+        this.loanForm
+          .get('toDate')
+          ?.setValidators([
+            Validators.required,
+            DateValidator.dateMinimum(value),
+          ]);
+      }
+      this.loanForm.get('toDate')?.updateValueAndValidity();
+    });
   }
 
   onAddLoan() {
     const newLoan = {
       bookId: this.book.id,
+      isReturn: false,
       ...this.loanForm.value,
     };
 
