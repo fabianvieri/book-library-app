@@ -15,6 +15,7 @@ import { LoansComponent } from './loans/loans.component';
 import { AddLoanComponent } from './loans/add-loan/add-loan.component';
 import { LoanDetailComponent } from './loans/loan-detail/loan-detail.component';
 import { LoanListComponent } from './loans/loan-list/loan-list.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
       { path: ':id', component: LoanDetailComponent },
       { path: ':id/add', component: AddLoanComponent },
     ],
+  },
+  {
+    path: 'login',
+    component: AuthComponent,
   },
 ];
 

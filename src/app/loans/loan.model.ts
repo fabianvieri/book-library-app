@@ -10,3 +10,8 @@ export type Loan = {
 export type LoanData = {
   [s: string]: Omit<Loan, 'id'>;
 };
+
+export enum LoanStatus {
+  InProcess = 'In Process',
+  Fined = 'Fined',
+}
