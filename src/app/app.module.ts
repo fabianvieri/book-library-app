@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgOptimizedImage } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { LoanDetailComponent } from './loans/loan-detail/loan-detail.component';
 import { LoanListComponent } from './loans/loan-list/loan-list.component';
 import { LoanComponent } from './loans/loan/loan.component';
 import { FilterLoanPipe } from './loans/filter-loan.pipe';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { FilterLoanPipe } from './loans/filter-loan.pipe';
     LoanListComponent,
     LoanComponent,
     FilterLoanPipe,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { FilterLoanPipe } from './loans/filter-loan.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent],

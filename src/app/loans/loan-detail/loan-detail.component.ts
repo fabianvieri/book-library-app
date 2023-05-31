@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanHttpService } from '../loan-http.service';
-import { Loan } from '../loan.model';
+import { Loan, LoanStatus } from '../loan.model';
 import { Book } from 'src/app/books/book.model';
 
 @Component({
@@ -48,13 +48,17 @@ export class LoanDetailComponent implements OnInit {
       });
   }
 
-  getLoanStatus(to: string) {
+  getLoanStatus(to: string): LoanStatus {
     const toDate = new Date(to);
     const date = new Date();
     const d = date.getDate();
     const m = date.getMonth();
     const y = date.getFullYear();
     const today = new Date(y, m, d);
-    return today > toDate ? 'fined' : 'in process';
+    return today > toDate ? LoanStatus.Fined : LoanStatus.InProcess;
+  }
+
+  get LoanStatus(): typeof LoanStatus {
+    return LoanStatus;
   }
 }

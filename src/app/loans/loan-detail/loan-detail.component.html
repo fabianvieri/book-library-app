@@ -42,8 +42,9 @@
           <span
             class="badge fs-6 text-capitalize"
             [ngClass]="{
-              'text-bg-primary': getLoanStatus(loan.toDate) === 'in process',
-              'text-bg-danger': getLoanStatus(loan.toDate) === 'fined'
+              'text-bg-primary':
+                getLoanStatus(loan.toDate) === LoanStatus.InProcess,
+              'text-bg-danger': getLoanStatus(loan.toDate) === LoanStatus.Fined
             }"
             >{{ getLoanStatus(loan.toDate) }}</span
           >
