@@ -27,6 +27,8 @@ import { LoanListComponent } from './loans/loan-list/loan-list.component';
 import { LoanComponent } from './loans/loan/loan.component';
 import { FilterLoanPipe } from './loans/filter-loan.pipe';
 import { AuthComponent } from './auth/auth.component';
+import { UsersComponent } from './users/users.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { AuthComponent } from './auth/auth.component';
     LoanComponent,
     FilterLoanPipe,
     AuthComponent,
+    UsersComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

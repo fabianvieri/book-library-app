@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoginData, LoginResponse, Admin } from './auth.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Subject, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private loginUrl = `${environment.authUrl}/accounts:signInWithPassword?key=${environment.apiKey}`;
-  adminSubject = new Subject<Admin | null>();
+  adminSubject = new BehaviorSubject<Admin | null>(null);
   expirationTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -42,6 +42,7 @@ export class AuthService {
         new Date().getTime() + Number(data.expiresIn) * 1000
       ),
     };
+
     localStorage.setItem('adminData', JSON.stringify(admin));
     this.adminSubject.next(admin);
   }

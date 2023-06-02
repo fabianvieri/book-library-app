@@ -5,16 +5,3 @@ footer {
 .container {
   max-width: 90%;
 }
-
-.auth-link .nav-item:hover {
-  opacity: 0.8;
-}
-
-.nav-item a {
-  color: white;
-}
-
-.nav-pills .active {
-  background: var(--bs-warning);
-  color: black;
-}
