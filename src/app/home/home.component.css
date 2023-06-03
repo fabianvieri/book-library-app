@@ -1,9 +1,0 @@
-.custom-card {
-  width: 250px;
-  background-color: hsl(0, 0%, 22%);
-}
-
-.custom-card img {
-  max-width: 100%;
-  aspect-ratio: 1/1;
-}

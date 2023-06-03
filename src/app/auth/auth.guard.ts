@@ -10,8 +10,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   return authService.adminSubject.pipe(
     take(1),
     map((admin) => {
-      console.log(admin);
-
       if (admin) return true;
       return router.createUrlTree(['/login']);
     })

@@ -1,14 +1,19 @@
 <h3 class="text-white fs-6">Add Category</h3>
-<form class="w-50 text-white" [formGroup]="categoryForm" (ngSubmit)="onEditCategory()">
+<form
+  class="w-50 text-white"
+  [formGroup]="categoryForm"
+  (ngSubmit)="onEditCategory()"
+>
   <div class="form-group">
     <label for="name">Category Name</label>
-    <input 
-        type="text" 
-        class="form-control" 
-        id="name" 
-        placeholder="Category Name" 
-        formControlName="name"
-        required/>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Category Name"
+      formControlName="name"
+      required
+    />
   </div>
   <div class="form-group">
     <label for="desc">Description</label>
@@ -20,7 +25,9 @@
       formControlName="desc"
       required
     ></textarea>
-  </div> 
-  <button type="submit" class="btn btn-warning mt-2 w-100" >Edit</button>
-  <a routerLink="/categories" class="btn btn-success mt-2 w-100">Category List</a>
+  </div>
+  <button type="submit" class="btn btn-warning mt-2 w-100">Edit</button>
+  <a routerLink="/admin/categories" class="btn btn-success mt-2 w-100"
+    >Category List</a
+  >
 </form>

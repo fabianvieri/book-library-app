@@ -9,7 +9,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
-import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { BookDetailComponent } from './home/book-detail/book-detail.component';
 import { categoryResolver } from './resolvers/category.resolver';
 import { LoansComponent } from './loans/loans.component';
 import { AddLoanComponent } from './loans/add-loan/add-loan.component';
@@ -18,6 +18,7 @@ import { LoanListComponent } from './loans/loan-list/loan-list.component';
 import { AuthComponent } from './auth/auth.component';
 import { UsersComponent } from './users/users.component';
 import { authGuard } from './auth/auth.guard';
+import { BookDisplayComponent } from './home/book-display/book-display.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,10 @@ const routes: Routes = [
   {
     path: 'books',
     component: HomeComponent,
-    children: [{ path: ':id', component: BookDetailComponent }],
+    children: [
+      { path: '', component: BookDisplayComponent },
+      { path: ':id', component: BookDetailComponent },
+    ],
   },
   {
     path: 'admin',

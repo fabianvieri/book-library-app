@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -11,7 +12,11 @@ export class AuthComponent implements OnInit {
   authForm!: FormGroup;
   isError = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.authForm = this.fb.group({
@@ -28,8 +33,9 @@ export class AuthComponent implements OnInit {
 
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        console.log(response);
+        console.log('sucess login', response);
         this.isError = false;
+        this.router.navigate(['/books']);
       },
       error: (error) => {
         this.isError = true;
