@@ -1,58 +1,10 @@
 <div class="container d-flex flex-column">
   <h1 class="text-uppercase fw-bold">Books</h1>
-  <div class="d-flex">
-    <nav
-      class="d-flex flex-column flex-shrink-0 py-3 ps-3 pe-4 text-white bg-dark rounded-start"
-      style="width: 300px"
-    >
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            class="nav-link"
-            aria-current="page"
-            >Books Display</a
-          >
-        </li>
-        <li class="nav-item">
-          <a routerLink="/books" routerLinkActive="active" class="nav-link"
-            >Books Management</a
-          >
-        </li>
-        <li class="nav-item">
-          <a routerLink="/loans" routerLinkActive="active" class="nav-link"
-            >Books Loan Management</a
-          >
-        </li>
-        <li class="nav-item">
-          <a routerLink="/categories" routerLinkActive="active" class="nav-link"
-            >Books Category Management</a
-          >
-        </li>
-        <li class="nav-item">
-          <a routerLink="/users" routerLinkActive="active" class="nav-link"
-            >User Management</a
-          >
-        </li>
-      </ul>
-      <hr />
-      <div class="auth-link">
-        <ul class="nav text-small d-flex flex-column">
-          <li class="nav-item">
-            <a class="nav-link text-warning" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-warning" href="#">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <app-sidebar>
     <main class="bg-dark w-100 rounded-end pb-5 pt-3 px-3">
       <router-outlet></router-outlet>
     </main>
-  </div>
+  </app-sidebar>
   <footer class="text-end">
     <p class="text-muted fst-italic">Copyright &copy; 2023 BCA Books</p>
   </footer>

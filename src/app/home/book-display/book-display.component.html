@@ -1,0 +1,17 @@
+<h3 class="text-white fs-6">Available Books</h3>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<p *ngIf="!isLoading && isError" class="text-danger fw-bold">
+  Error Getting Book
+</p>
+<div *ngIf="!isLoading && !isError" class="row g-2">
+  <div class="col-3" *ngFor="let book of books | filterBook : 0 : 'quantity'">
+    <div class="card custom-card p-2 position-relative">
+      <img [src]="book.coverUrl" [alt]="book.title" class="card-img-top" />
+      <div class="card-body text-center">
+        <button (click)="goToDetailPage(book)" class="btn btn-warning">
+          View
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

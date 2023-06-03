@@ -1,29 +1,29 @@
 <div class="d-flex justify-content-between align-items-center mb-2">
-    <h3 class="text-white fs-6">Category List</h3>
-    <a class="btn btn-warning" routerLink="/categories/add">Add Category</a>
+  <h3 class="text-white fs-6">Category List</h3>
+  <a class="btn btn-warning" routerLink="/admin/categories/add">Add Category</a>
 </div>
-  
-
-
 <table class="table table-striped table-dark">
-    <thead class="table table-warning">
+  <thead class="table table-warning">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Category</th>
-        <th scope="col">Description</th>
-        <th scope="col">Handle</th>
+      <th scope="col">#</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Handle</th>
     </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let category of categories ; let i= index">
-            <th scope="row">{{i+1}}</th>
-            <td>{{category.name}}</td>
-            <td>{{category.desc}}</td>
-            <td>
-                <button class="btn btn-success" (click)="goToEditCategory(category)">Edit</button>
-                <button class="btn btn-danger" (click)="onDeleteCategory(category)">Delete</button>
-            </td>
-        </tr>
-    </tbody>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ category.name }}</td>
+      <td>{{ category.desc }}</td>
+      <td>
+        <button class="btn btn-success" (click)="goToEditCategory(category)">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="onDeleteCategory(category)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
-  

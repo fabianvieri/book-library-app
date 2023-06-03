@@ -9,63 +9,80 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
-import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { BookDetailComponent } from './home/book-detail/book-detail.component';
 import { categoryResolver } from './resolvers/category.resolver';
 import { LoansComponent } from './loans/loans.component';
 import { AddLoanComponent } from './loans/add-loan/add-loan.component';
 import { LoanDetailComponent } from './loans/loan-detail/loan-detail.component';
 import { LoanListComponent } from './loans/loan-list/loan-list.component';
 import { AuthComponent } from './auth/auth.component';
+import { UsersComponent } from './users/users.component';
+import { authGuard } from './auth/auth.guard';
+import { BookDisplayComponent } from './home/book-display/book-display.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    children: [],
-  },
-  {
-    path: 'book/:id',
-    component: BookDetailComponent,
+    redirectTo: '/books',
+    pathMatch: 'full',
   },
   {
     path: 'books',
-    component: BooksComponent,
+    component: HomeComponent,
     children: [
-      { path: '', component: BookListComponent },
-      {
-        path: 'add',
-        component: AddBookComponent,
-        resolve: { categories: categoryResolver },
-      },
-      {
-        path: ':id/edit',
-        component: EditBookComponent,
-        resolve: { categories: categoryResolver },
-      },
+      { path: '', component: BookDisplayComponent },
+      { path: ':id', component: BookDetailComponent },
     ],
   },
   {
-    path: 'categories',
-    component: CategoriesComponent,
+    path: 'admin',
+    canActivate: [authGuard],
     children: [
-      { path: '', component: CategoryListComponent },
       {
-        path: 'add',
-        component: AddCategoryComponent,
+        path: 'books',
+        component: BooksComponent,
+        children: [
+          { path: '', component: BookListComponent },
+          {
+            path: 'add',
+            component: AddBookComponent,
+            resolve: { categories: categoryResolver },
+          },
+          {
+            path: ':id/edit',
+            component: EditBookComponent,
+            resolve: { categories: categoryResolver },
+          },
+        ],
       },
       {
-        path: ':id/edit',
-        component: EditCategoryComponent,
+        path: 'categories',
+        component: CategoriesComponent,
+        children: [
+          { path: '', component: CategoryListComponent },
+          {
+            path: 'add',
+            component: AddCategoryComponent,
+          },
+          {
+            path: ':id/edit',
+            component: EditCategoryComponent,
+          },
+        ],
       },
-    ],
-  },
-  {
-    path: 'loans',
-    component: LoansComponent,
-    children: [
-      { path: '', component: LoanListComponent },
-      { path: ':id', component: LoanDetailComponent },
-      { path: ':id/add', component: AddLoanComponent },
+      {
+        path: 'loans',
+        component: LoansComponent,
+        children: [
+          { path: '', component: LoanListComponent },
+          { path: ':id', component: LoanDetailComponent },
+          { path: ':id/add', component: AddLoanComponent },
+        ],
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+      },
     ],
   },
   {

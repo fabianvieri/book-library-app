@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgOptimizedImage } from '@angular/common';
@@ -18,15 +18,18 @@ import { CategoryComponent } from './categories/category/category.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { BookDetailComponent } from './home/book-detail/book-detail.component';
 import { LoansComponent } from './loans/loans.component';
 import { FilterBookPipe } from './books/filter-book.pipe';
 import { AddLoanComponent } from './loans/add-loan/add-loan.component';
 import { LoanDetailComponent } from './loans/loan-detail/loan-detail.component';
 import { LoanListComponent } from './loans/loan-list/loan-list.component';
 import { LoanComponent } from './loans/loan/loan.component';
-import { FilterLoanPipe } from './loans/filter-loan.pipe';
 import { AuthComponent } from './auth/auth.component';
+import { UsersComponent } from './users/users.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { BookDisplayComponent } from './home/book-display/book-display.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,8 +53,10 @@ import { AuthComponent } from './auth/auth.component';
     LoanDetailComponent,
     LoanListComponent,
     LoanComponent,
-    FilterLoanPipe,
     AuthComponent,
+    UsersComponent,
+    SidebarComponent,
+    BookDisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,13 @@ import { AuthComponent } from './auth/auth.component';
     HttpClientModule,
     NgOptimizedImage,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

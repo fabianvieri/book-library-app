@@ -10,9 +10,9 @@ export class FilterBookPipe implements PipeTransform {
     filterValue: number | string,
     props: keyof Book
   ): Book[] {
-    if (value.length === 0) {
-      return value;
-    }
-    return value.filter((book) => book[props] !== filterValue);
+    if (value.length === 0) return value;
+    if (props === 'quantity' && typeof filterValue === 'number')
+      return value.filter((book) => book[props] > filterValue);
+    return value.filter((book) => book[props] === filterValue);
   }
 }

@@ -1,7 +1,4 @@
-<h3 class="text-white fs-6 text-uppercase">Loan Detail</h3>
-<p class="text-white mb-1 fw-bold">
-  <span class="text-warning">Book</span> : {{ book.title }}
-</p>
+<h3 class="text-white fs-6 mb-2">Loan Detail</h3>
 <div>
   <app-spinner *ngIf="isLoading"></app-spinner>
   <p class="text-danger fw-bold" *ngIf="!isLoading && isError">
@@ -28,12 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="
-          let loan of loans | filterLoan : false : 'isReturn';
-          let i = index
-        "
-      >
+      <tr *ngFor="let loan of loans; let i = index">
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ loan.user }}</td>
         <td>{{ loan.fromDate }}</td>
@@ -60,5 +52,8 @@
   <div *ngIf="isReturnError">
     <span class="text-bg-danger badge fs-6">Error returning book</span>
   </div>
-  <a routerLink="/loans" class="btn btn-success mt-2">Book List</a>
+  <p class="text-white mb-1 fw-bold">
+    <span class="text-warning">Book</span> : {{ book.title }}
+  </p>
+  <a routerLink="/admin/loans" class="btn btn-success mt-2">Book List</a>
 </div>
