@@ -7,15 +7,18 @@ import { Category } from '../category.model';
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.css']
+  styleUrls: ['./edit-category.component.css'],
 })
-export class EditCategoryComponent implements OnInit{
+export class EditCategoryComponent implements OnInit {
   category!: Category;
   categoryForm!: FormGroup;
+  isError = false;
+  isSuccess = false;
+  customErrorMessage = '';
 
   constructor(
     private form: CategoryFormService,
-    private categoryService: CategoryHttpService,
+    private categoryService: CategoryHttpService
   ) {}
 
   ngOnInit(): void {
@@ -24,15 +27,29 @@ export class EditCategoryComponent implements OnInit{
   }
 
   onEditCategory() {
-    if(confirm("Are you sure to update "+ this.category.name)) {
-      const updateCategory = {
-        [this.category.id]: this.categoryForm.value,
-      };
+    const updateCategory = {
+      [this.category.id]: {
+        isDeleted: this.category.isDeleted,
+        ...this.categoryForm.value,
+      },
+    };
 
-      this.categoryService.updateCategory(updateCategory).subscribe((data) => {
-        console.log('success editing category', data);
+    this.categoryService
+      .updateCategory(updateCategory, this.category.id)
+      .subscribe({
+        next: (data) => {
+          console.log('success editing category', data);
+          this.isSuccess = true;
+          this.isError = false;
+        },
+        error: (error) => {
+          if (error.cause && error.cause === 'BOOK_EXISTS')
+            this.customErrorMessage = 'Error Edit : Category is Used';
+          else this.customErrorMessage = '';
+
+          this.isError = true;
+          this.isSuccess = false;
+        },
       });
-      
-    }
   }
 }

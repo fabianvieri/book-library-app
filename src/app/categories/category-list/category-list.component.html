@@ -2,31 +2,53 @@
   <h3 class="text-white fs-6">Category List</h3>
   <a class="btn btn-warning" routerLink="/admin/categories/add">Add Category</a>
 </div>
-<table class="table table-dark table-bordered border-white">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Category</th>
-      <th scope="col">Description</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let category of categories; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ category.name }}</td>
-      <td>{{ category.desc }}</td>
-      <td>
-        <button
-          class="btn btn-success me-2"
-          (click)="goToEditCategory(category)"
-        >
-          Edit
-        </button>
-        <button class="btn btn-danger" (click)="onDeleteCategory(category)">
-          Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <p class="text-danger fw-bold" *ngIf="!isLoading && isError">
+    Error Getting Categories
+  </p>
+  <p
+    *ngIf="!isLoading && !isError && categories.length === 0"
+    class="text-danger fw-bold"
+  >
+    There are no categories
+  </p>
+  <table class="table table-dark table-bordered border-white">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ category.name }}</td>
+        <td>{{ category.desc }}</td>
+        <td>
+          <button
+            class="btn btn-success me-2"
+            (click)="goToEditCategory(category)"
+          >
+            Edit
+          </button>
+          <button class="btn btn-danger" (click)="onDeleteCategory(category)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isDeleteError">
+    <span class="text-bg-danger badge fs-6">{{
+      customErrorMessage.trim().length === 0
+        ? "Error Delete Category"
+        : customErrorMessage
+    }}</span>
+  </div>
+  <div *ngIf="isDeleteSuccess">
+    <span class="text-bg-success badge fs-6">Success Delete Category</span>
+  </div>
+</div>
