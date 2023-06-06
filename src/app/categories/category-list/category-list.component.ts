@@ -27,7 +27,7 @@ export class CategoryListComponent implements OnInit {
     this.isLoading = true;
     this.categoryService.getCategories().subscribe({
       next: (data) => {
-        this.categories = data.filter((ctg) => ctg.isDeleted === false);
+        this.categories = data;
         this.isLoading = false;
         this.isError = false;
       },
@@ -55,9 +55,8 @@ export class CategoryListComponent implements OnInit {
         },
       };
 
-      this.categoryService.updateCategory(deletedCtg, category.id).subscribe({
+      this.categoryService.updateCategory(deletedCtg, category.name).subscribe({
         next: (data) => {
-          console.log('success deleting category', data);
           this.categories = this.categories.filter(
             (ctg) => ctg.id !== category.id
           );

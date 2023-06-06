@@ -33,7 +33,6 @@ export class AuthComponent implements OnInit {
 
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        console.log('sucess login', response);
         this.isError = false;
         this.router.navigate(['/books']);
       },

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators';
 import { Category, CategoryData } from './category.model';
@@ -15,7 +15,11 @@ export class CategoryHttpService {
   constructor(private http: HttpClient, private bookService: BookHttpService) {}
 
   getCategories() {
-    return this.http.get<CategoryData>(this.categoryUrl).pipe(
+    const params = new HttpParams()
+      .set('orderBy', '"isDeleted"')
+      .set('equalTo', 'false');
+
+    return this.http.get<CategoryData>(this.categoryUrl, { params }).pipe(
       map((categories) => {
         return Object.keys(categories).map((key) => ({
           id: key,

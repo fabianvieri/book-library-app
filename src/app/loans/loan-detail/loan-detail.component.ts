@@ -38,7 +38,6 @@ export class LoanDetailComponent implements OnInit {
       .returnBook(loan.id, loan.bookId, { isReturn: true })
       .subscribe({
         next: (response) => {
-          console.log('success return book', response);
           this.loans = this.loans.filter((l) => loan.id !== l.id);
           this.isReturnError = false;
         },

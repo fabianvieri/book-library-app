@@ -36,7 +36,6 @@ export class EditUserComponent implements OnInit {
 
     this.userService.updateUser(updateUser, this.user.id).subscribe({
       next: (data) => {
-        console.log('success editing user', data);
         this.isSuccess = true;
         this.isError = false;
       },

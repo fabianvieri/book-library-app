@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
     this.isLoading = true;
     this.userService.getUsers().subscribe({
       next: (users) => {
-        this.users = users.filter((user) => user.isDeleted === false);
+        this.users = users;
         this.isLoading = false;
         this.isError = false;
       },
@@ -59,7 +59,6 @@ export class UserListComponent implements OnInit {
 
       this.userService.updateUser(deletedUser, user.id).subscribe({
         next: (data) => {
-          console.log('success deleting user', data);
           this.users = this.users.filter((u) => u.id !== user.id);
           this.isDeleteSuccess = true;
           this.isDeleteError = false;

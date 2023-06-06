@@ -35,10 +35,9 @@ export class EditCategoryComponent implements OnInit {
     };
 
     this.categoryService
-      .updateCategory(updateCategory, this.category.id)
+      .updateCategory(updateCategory, this.category.name)
       .subscribe({
         next: (data) => {
-          console.log('success editing category', data);
           this.isSuccess = true;
           this.isError = false;
         },

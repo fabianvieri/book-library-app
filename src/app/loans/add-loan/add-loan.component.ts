@@ -74,7 +74,6 @@ export class AddLoanComponent implements OnInit {
 
       this.loanService.addLoan(newLoan).subscribe({
         next: (data) => {
-          console.log('success adding book', data);
           this.isSuccess = true;
           this.isError = false;
           this.loanForm.reset();

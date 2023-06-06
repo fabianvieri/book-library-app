@@ -32,7 +32,6 @@ export class AddBookComponent implements OnInit {
   onAddBook() {
     this.bookService.addBook(this.bookForm.value).subscribe({
       next: (data) => {
-        console.log('success adding book', data);
         this.isSuccess = true;
         this.isError = false;
         this.bookForm.reset();
