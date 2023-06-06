@@ -30,7 +30,6 @@ export class AddCategoryComponent implements OnInit {
 
     this.categoryService.addCategory(newCtg).subscribe({
       next: (data) => {
-        console.log('success adding category', data);
         this.isSuccess = true;
         this.isError = false;
         this.categoryForm.reset();

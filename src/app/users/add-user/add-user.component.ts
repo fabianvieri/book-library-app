@@ -30,7 +30,6 @@ export class AddUserComponent implements OnInit {
 
     this.userService.addUser(newUser).subscribe({
       next: (data) => {
-        console.log('success adding user', data);
         this.isSuccess = true;
         this.isError = false;
         this.userForm.reset();

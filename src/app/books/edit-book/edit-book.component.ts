@@ -39,7 +39,6 @@ export class EditBookComponent implements OnInit {
 
     this.bookService.updateBook(updateBook).subscribe({
       next: (data) => {
-        console.log('success editing book', data);
         this.isSuccess = true;
         this.isError = false;
       },

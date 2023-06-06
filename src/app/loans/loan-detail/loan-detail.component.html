@@ -1,12 +1,12 @@
 <h3 class="text-white fs-6 mb-2">Loan Detail</h3>
 <div>
   <app-spinner *ngIf="isLoading"></app-spinner>
-  <p class="text-danger fw-bold" *ngIf="!isLoading && isError">
+  <p class="text-danger fw-bold mb-1" *ngIf="!isLoading && isError">
     Error Getting Loan
   </p>
   <p
     *ngIf="!isLoading && !isError && loans.length === 0"
-    class="text-danger fw-bold"
+    class="text-danger fw-bold mb-1"
   >
     There are no ongoing loan for this book
   </p>

@@ -13,7 +13,6 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
-import { CategoryComponent } from './categories/category/category.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -44,7 +43,6 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     EditBookComponent,
     CategoriesComponent,
     AddCategoryComponent,
-    CategoryComponent,
     CategoryListComponent,
     EditCategoryComponent,
     SpinnerComponent,

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User, UserData } from './user.model';
@@ -15,10 +15,12 @@ export class UserHttpService {
   constructor(private http: HttpClient, private loanService: LoanHttpService) {}
 
   getUsers() {
-    return this.http.get<UserData>(this.userUrl).pipe(
-      map((users) => {
-        console.log(users);
+    const params = new HttpParams()
+      .set('orderBy', '"isDeleted"')
+      .set('equalTo', 'false');
 
+    return this.http.get<UserData>(this.userUrl, { params }).pipe(
+      map((users) => {
         return Object.keys(users).map((key) => ({
           id: key,
           ...users[key],
