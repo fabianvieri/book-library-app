@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgOptimizedImage } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,7 +69,6 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgOptimizedImage,
   ],
   providers: [
     {
