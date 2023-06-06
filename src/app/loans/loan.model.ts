@@ -1,7 +1,9 @@
+import { User } from '../users/user.model';
+
 export type Loan = {
   id: string;
   bookId: string;
-  user: string;
+  user: User;
   fromDate: string;
   toDate: string;
   isReturn: boolean;

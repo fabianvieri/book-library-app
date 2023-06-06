@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h3 class="text-white fs-6">User List</h3>
+  <a class="btn btn-warning" routerLink="/admin/users/add">Add User</a>
+</div>
+<div>
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <p class="text-danger fw-bold" *ngIf="!isLoading && isError">
+    Error Getting Users
+  </p>
+  <p
+    *ngIf="!isLoading && !isError && users.length === 0"
+    class="text-danger fw-bold"
+  >
+    There are no users
+  </p>
+  <table
+    *ngIf="!isLoading && !isError && users.length > 0"
+    class="table table-dark table-bordered border-white"
+  >
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.address }}</td>
+        <td>
+          <button class="btn btn-success me-2" (click)="goToEditPage(user)">
+            Edit
+          </button>
+          <button class="btn btn-danger" (click)="onDeleteUser(user)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isDeleteError">
+    <span class="text-bg-danger badge fs-6">{{
+      customErrorMessage.trim().length === 0
+        ? "Error Delete User"
+        : customErrorMessage
+    }}</span>
+  </div>
+  <div *ngIf="isDeleteSuccess">
+    <span class="text-bg-success badge fs-6">Success Delete User</span>
+  </div>
+</div>

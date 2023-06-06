@@ -19,6 +19,10 @@ import { AuthComponent } from './auth/auth.component';
 import { UsersComponent } from './users/users.component';
 import { authGuard } from './auth/auth.guard';
 import { BookDisplayComponent } from './home/book-display/book-display.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { userResolver } from './resolvers/user.resolver';
 
 const routes: Routes = [
   {
@@ -76,12 +80,21 @@ const routes: Routes = [
         children: [
           { path: '', component: LoanListComponent },
           { path: ':id', component: LoanDetailComponent },
-          { path: ':id/add', component: AddLoanComponent },
+          {
+            path: ':id/add',
+            component: AddLoanComponent,
+            resolve: { users: userResolver },
+          },
         ],
       },
       {
         path: 'users',
         component: UsersComponent,
+        children: [
+          { path: '', component: UserListComponent },
+          { path: 'add', component: AddUserComponent },
+          { path: ':id/edit', component: EditUserComponent },
+        ],
       },
     ],
   },

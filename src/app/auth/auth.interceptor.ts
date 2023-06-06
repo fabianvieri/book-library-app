@@ -21,8 +21,10 @@ export class AuthInterceptor implements HttpInterceptor {
       take(1),
       exhaustMap((admin) => {
         if (!admin) return next.handle(request);
-        const authParams = new HttpParams().set('auth', admin.idToken);
-        const modifiedReq = request.clone({ params: authParams });
+        const newParams = request.params
+          ? request.params.append('auth', admin.idToken)
+          : undefined;
+        const modifiedReq = request.clone({ params: newParams });
         return next.handle(modifiedReq);
       })
     );
