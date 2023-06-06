@@ -26,6 +26,16 @@
       required
     ></textarea>
   </div>
+  <span class="badge bg-danger fs-6 my-2" *ngIf="isError">
+    {{
+      customErrorMessage.trim().length === 0
+        ? "Error Edit Category"
+        : customErrorMessage
+    }}
+  </span>
+  <span class="badge bg-success fs-6 my-2" *ngIf="isSuccess">
+    Success Edit Category
+  </span>
   <button type="submit" class="btn btn-warning mt-2 w-100">Edit</button>
   <a routerLink="/admin/categories" class="btn btn-success mt-2 w-100"
     >Category List</a

@@ -32,8 +32,6 @@ export class UserListComponent implements OnInit {
         this.isError = false;
       },
       error: (error) => {
-        console.log(error);
-
         this.isLoading = false;
         this.isError = true;
       },
@@ -48,30 +46,33 @@ export class UserListComponent implements OnInit {
   }
 
   onDeleteUser(user: User) {
-    const updateUser = {
-      [user.id]: {
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        address: user.address,
-        isDeleted: true,
-      },
-    };
+    if (confirm('Are you sure want to delete this user?')) {
+      const deletedUser = {
+        [user.id]: {
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+          address: user.address,
+          isDeleted: true,
+        },
+      };
 
-    this.userService.updateUser(updateUser, user.id).subscribe({
-      next: (data) => {
-        console.log('success editing user', data);
-        this.isDeleteSuccess = true;
-        this.isDeleteError = false;
-      },
-      error: (error) => {
-        if (error.cause && error.cause === 'LOAN_EXISTS')
-          this.customErrorMessage = 'Error Delete : User has Loan';
-        else this.customErrorMessage = '';
+      this.userService.updateUser(deletedUser, user.id).subscribe({
+        next: (data) => {
+          console.log('success deleting user', data);
+          this.users = this.users.filter((u) => u.id !== user.id);
+          this.isDeleteSuccess = true;
+          this.isDeleteError = false;
+        },
+        error: (error) => {
+          if (error.cause && error.cause === 'LOAN_EXISTS')
+            this.customErrorMessage = 'Error Delete : User has Loan';
+          else this.customErrorMessage = '';
 
-        this.isDeleteError = true;
-        this.isDeleteSuccess = false;
-      },
-    });
+          this.isDeleteError = true;
+          this.isDeleteSuccess = false;
+        },
+      });
+    }
   }
 }

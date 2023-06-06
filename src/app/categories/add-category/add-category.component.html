@@ -26,6 +26,12 @@
       required
     ></textarea>
   </div>
+  <span class="badge bg-danger fs-6 my-2" *ngIf="isError">
+    Error Add New User
+  </span>
+  <span class="badge bg-success fs-6 my-2" *ngIf="isSuccess">
+    Success Add New User
+  </span>
   <button type="submit" class="btn btn-warning mt-2 w-100">Add</button>
   <a routerLink="/admin/categories" class="btn btn-success mt-2 w-100"
     >Category List</a
