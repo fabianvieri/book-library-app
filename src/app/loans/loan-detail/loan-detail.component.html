@@ -12,7 +12,7 @@
   </p>
   <table
     *ngIf="!isLoading && !isError && loans.length > 0"
-    class="table table-dark"
+    class="table table-dark table-bordered border-white"
   >
     <thead>
       <tr>
@@ -27,7 +27,7 @@
     <tbody>
       <tr *ngFor="let loan of loans; let i = index">
         <th scope="row">{{ i + 1 }}</th>
-        <td>{{ loan.user }}</td>
+        <td>{{ loan.user.name }}</td>
         <td>{{ loan.fromDate }}</td>
         <td>{{ loan.toDate }}</td>
         <td>

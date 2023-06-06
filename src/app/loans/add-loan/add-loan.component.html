@@ -12,7 +12,7 @@
       id="user"
     >
       <option value="" selected>Choose User</option>
-      <option *ngFor="let user of users" [ngValue]="user.name">
+      <option *ngFor="let user of users" [ngValue]="user.id">
         {{ user.name }}
       </option>
     </select>

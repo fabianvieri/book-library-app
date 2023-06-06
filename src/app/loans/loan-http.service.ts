@@ -14,7 +14,7 @@ export class LoanHttpService {
 
   constructor(private http: HttpClient, private bookService: BookHttpService) {}
 
-  addLoan(loan: Loan) {
+  addLoan(loan: Omit<Loan, 'id'>) {
     return this.http.post(this.loanUrl, loan).pipe(
       switchMap((response) => {
         return this.bookService.getBookById(loan.bookId);
@@ -47,9 +47,23 @@ export class LoanHttpService {
       );
   }
 
-  returnBook(loanId: string, bookId: string, loan: Partial<Loan>) {
-    console.log(loanId, bookId, loan);
+  getLoanByUserId(id: string) {
+    const params = new HttpParams()
+      .set('orderBy', '"user/id"')
+      .set('equalTo', `"${id}"`);
 
+    return this.http
+      .get<LoanData>(this.loanUrl, {
+        params,
+      })
+      .pipe(
+        map((loans) => {
+          return Object.keys(loans).map((key) => ({ id: key, ...loans[key] }));
+        })
+      );
+  }
+
+  returnBook(loanId: string, bookId: string, loan: Partial<Loan>) {
     return this.http.patch(`${this.baseUrl}/loan/${loanId}.json`, loan).pipe(
       switchMap((response) => {
         return this.bookService.getBookById(bookId);

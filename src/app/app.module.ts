@@ -30,6 +30,9 @@ import { UsersComponent } from './users/users.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { BookDisplayComponent } from './home/book-display/book-display.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UsersComponent,
     SidebarComponent,
     BookDisplayComponent,
+    UserListComponent,
+    AddUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

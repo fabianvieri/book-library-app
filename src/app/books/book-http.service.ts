@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Book, BookData } from './book.model';
@@ -26,6 +26,21 @@ export class BookHttpService {
 
   getBookById(id: string) {
     return this.http.get<Book>(`${this.baseUrl}/book/${id}.json`);
+  }
+
+  getBookByCategory(category: string) {
+    const params = new HttpParams()
+      .set('orderBy', '"category"')
+      .set('equalTo', `"${category}"`);
+
+    return this.http.get<BookData>(this.bookUrl, { params }).pipe(
+      map((books) => {
+        return Object.keys(books).map((key) => ({
+          id: key,
+          ...books[key],
+        }));
+      })
+    );
   }
 
   addBook(book: Book) {

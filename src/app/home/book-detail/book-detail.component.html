@@ -1,19 +1,21 @@
-<div class="d-flex">
+<h3 class="text-white fs-6 mb-2">Book Details</h3>
+<div class="d-flex align-items-center">
   <div class="me-3">
     <img class="mw-100" [src]="book.coverUrl" [alt]="book.title" />
   </div>
-  <div class="">
-    <p class="text-white fs-4">
-      <span class="text-warning fw-bold">Title : </span>{{ book.title }}
-    </p>
-    <p class="text-white fs-4">
-      <span class="text-warning fw-bold">Auhtor : </span>{{ book.author }}
-    </p>
-    <p class="text-white fs-4">
-      <span class="text-warning fw-bold">Publisher : </span>{{ book.publisher }}
-    </p>
-    <p class="text-white fs-4">
-      <span class="text-warning fw-bold">Category : </span>{{ book.category }}
-    </p>
+  <div class="border border-white p-4 w-50">
+    <p class="text-warning m-0 fs-5">Title</p>
+    <p class="text-white fw-bold fs-4">{{ book.title }}</p>
+    <hr class="border border-secondary border-1 opacity-75" />
+    <p class="text-warning m-0 fs-5">Author</p>
+    <p class="text-white fw-bold fs-4">{{ book.author }}</p>
+    <hr class="border border-secondary border-1 opacity-75" />
+    <p class="text-warning m-0 fs-5">Publisher</p>
+    <p class="text-white fw-bold fs-4">{{ book.publisher }}</p>
+    <hr class="border border-secondary border-1 opacity-75" />
+    <p class="text-warning m-0 fs-5">Category</p>
+    <p class="text-white fw-bold fs-4">{{ book.category }}</p>
+    <hr class="border border-secondary border-1 opacity-75" />
+    <a class="btn btn-success" routerLink="/books">Available Books</a>
   </div>
 </div>
