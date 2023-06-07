@@ -38,6 +38,7 @@ export class AuthService {
       id: data.localId,
       email: data.email,
       idToken: data.idToken,
+      displayName: data.displayName,
       tokenExpirationDate: new Date(
         new Date().getTime() + Number(data.expiresIn) * 1000
       ),

@@ -23,6 +23,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { userResolver } from './resolvers/user.resolver';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,8 @@ const routes: Routes = [
     path: 'login',
     component: AuthComponent,
   },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' },
 ];
 
 @NgModule({
