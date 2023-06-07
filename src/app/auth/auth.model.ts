@@ -2,6 +2,7 @@ export type Admin = {
   id: string;
   email: string;
   idToken: string;
+  displayName: string;
   tokenExpirationDate: Date;
 };
 

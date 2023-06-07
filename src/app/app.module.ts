@@ -31,6 +31,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     UserListComponent,
     AddUserComponent,
     EditUserComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

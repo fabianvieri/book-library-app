@@ -8,14 +8,16 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  isAuthenticated = false;
   subAdmin: Subscription = Subscription.EMPTY;
+  isAuthenticated = false;
+  adminName = '';
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.subAdmin = this.authService.adminSubject.subscribe((admin) => {
       this.isAuthenticated = !!admin;
+      if (admin) this.adminName = admin.displayName;
     });
   }
 
