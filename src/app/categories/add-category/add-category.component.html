@@ -32,7 +32,13 @@
   <span class="badge bg-success fs-6 my-2" *ngIf="isSuccess">
     Success Add New Category
   </span>
-  <button type="submit" class="btn btn-warning mt-2 w-100">Add</button>
+  <button
+    type="submit"
+    class="btn btn-warning mt-2 w-100"
+    [disabled]="!categoryForm.valid"
+  >
+    Add
+  </button>
   <a routerLink="/admin/categories" class="btn btn-success mt-2 w-100"
     >Category List</a
   >
