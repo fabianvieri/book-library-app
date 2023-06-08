@@ -14,6 +14,15 @@
       formControlName="name"
       required
     />
+    <span
+      class="text-danger"
+      *ngIf="
+        !categoryForm.get('name')!.valid &&
+        (categoryForm.get('name')!.dirty || categoryForm.get('name')!.touched)
+      "
+    >
+      Invalid Category Name
+    </span>
   </div>
   <div class="form-group">
     <label for="desc">Description</label>
@@ -25,6 +34,15 @@
       formControlName="desc"
       required
     ></textarea>
+    <span
+      class="text-danger"
+      *ngIf="
+        !categoryForm.get('desc')!.valid &&
+        (categoryForm.get('desc')!.dirty || categoryForm.get('desc')!.touched)
+      "
+    >
+      Invalid Category Description
+    </span>
   </div>
   <span class="badge bg-danger fs-6 my-2" *ngIf="isError">
     Error Add New Category
